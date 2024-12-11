@@ -77,7 +77,7 @@ object TSPreferenceHelper : XposedContext() {
         XposedHelpers.callMethod(textTipView, "setTip", tip)
 
         val imageView = getObjectField(textTipView, ImageView::class.java)?.apply {
-            visibility = if (showArrow) View.VISIBLE else View.GONE
+            visibility = View.GONE
         }
 
         val svgManager = XposedHelpers.callStaticMethod(
@@ -100,7 +100,7 @@ object TSPreferenceHelper : XposedContext() {
             l?.let { setOnClickListener(it) }
             setBackgroundColor(getColor("CAM_X0201"))
 
-            if (showArrow) {
+            if (false) {
                 setOnTouchListener { v, event ->
                     val isInside = event.x in 0f..v.width.toFloat() && event.y in 0f..v.height.toFloat()
                     val backgroundColor = getColor("CAM_X0201")
